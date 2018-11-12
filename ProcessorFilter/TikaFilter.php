@@ -52,12 +52,12 @@ class TikaFilter extends ProcessorFilter
 
   function execute(&$document, Datasource $datasource)
   {
-    $output = '';
+    $output = [];
     exec('"' . $this->getSettings()['java_path'] . '" -jar "' . $this->getSettings()['tika_path'] . '" -' . $this->getSettings()['output_format'] . ' "' . $this->getArgumentValue('filePath', $document) . '"', $output);
 
 
     return array(
-      'output' => $output
+      'output' => implode("\n", $output)
     );
   }
 
