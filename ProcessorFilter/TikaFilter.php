@@ -53,7 +53,7 @@ class TikaFilter extends ProcessorFilter
   function execute(&$document, Datasource $datasource)
   {
     $output = [];
-    exec('"' . $this->getSettings()['java_path'] . '" -jar "' . $this->getSettings()['tika_path'] . '" -' . $this->getSettings()['output_format'] . ' "' . $this->getArgumentValue('filePath', $document) . '"', $output);
+    exec('"' . $this->getSettings()['java_path'] . '" -jar "' . $this->getSettings()['tika_path'] . '" -' . $this->getSettings()['output_format'] . ' "' . $this->getArgumentValue('filePath', $document) . '" 2>/dev/null', $output);
 
 
     return array(
